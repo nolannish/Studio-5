@@ -5,6 +5,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private int score = 0;
+    [SerializeField] private ScoreCounter scoreCounter;
 
     private int currentBrickCount;
     private int totalBrickCount;
@@ -43,5 +45,9 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
+    }
+
+    public void IncrementScore(){
+        score++;
     }
 }
