@@ -20,19 +20,16 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
-        Debug.Log("[GameManager] OnEnable: Game enabled.");
     }
 
     private void OnDisable()
     {
         InputHandler.Instance.OnFire.RemoveListener(FireBall);
-        Debug.Log("[GameManager] OnDisable: Game disabled.");
     }
 
     private void FireBall()
     {
         ball.FireBall();
-        Debug.Log("[GameManager] FireBall: Ball fired.");
     }
 
     public void OnBrickDestroyed(Vector3 position)
@@ -40,7 +37,6 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // fire audio here
         // implement particle effect here
         // add camera shake here
-        Debug.Log("[GameManager] OnBrickDestroyed: Starting camera shake.");
         StartCoroutine(ShakeCamera());
 
         currentBrickCount--;
@@ -51,7 +47,6 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public void KillBall()
     {
         maxLives--;
-        Debug.Log($"[GameManager] KillBall: Ball killed, lives remaining: {maxLives}");
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
