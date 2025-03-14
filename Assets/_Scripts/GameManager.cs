@@ -35,6 +35,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // implement particle effect here
         // add camera shake here
         currentBrickCount--;
+        // score++;
+        // scoreCounter.UpdateScore(score);
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
         if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
@@ -47,8 +49,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         ball.ResetBall();
     }
 
-    public void IncrementScore(){
-        score++;
-        scoreCounter.UpdateScore(score);
-    }
+    // public void IncrementScore(){
+    //     score++;
+    //     scoreCounter.UpdateScore(score);
+    // }
 }
