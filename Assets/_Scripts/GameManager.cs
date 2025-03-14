@@ -8,7 +8,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private Transform bricksContainer;
 
     [SerializeField] public static int score = 0;
-    [SerializeField] private ScoreCounter scoreCounter
+    [SerializeField] private ScoreCounter scoreCounter;
     [SerializeField] private float shakeDuration = 0.1f; // How long the camera shake lasts
     [SerializeField] private float shakeIntensity = 0.2f; // How strong the camera shake is
 
