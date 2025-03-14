@@ -49,5 +49,6 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void IncrementScore(){
         score++;
+        scoreCounter.UpdateScore(score);
     }
 }
