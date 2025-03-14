@@ -11,15 +11,15 @@ public class ScoreCounter : MonoBehaviour
     [SerializeField] private Transform scoreTextContainer;
     [SerializeField] private float duration;
     [SerializeField] private Ease animationCurve;
-
     private float containerInitPosition;
     private float moveAmount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         Canvas.ForceUpdateCanvases();
-        current.SetText("0");
-        toUpdate.SetText("0");
+        current.SetText(GameManager.score.ToString());
+        toUpdate.SetText(GameManager.score.ToString());
         containerInitPosition = scoreTextContainer.localPosition.y;
         moveAmount = current.rectTransform.rect.height;
     }

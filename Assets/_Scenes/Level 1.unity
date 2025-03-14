@@ -616,7 +616,7 @@ MonoBehaviour:
   ball: {fileID: 2054714181}
   bricksContainer: {fileID: 1170594424}
   score: 0
-  scoreCounter: {fileID: 0}
+  scoreCounter: {fileID: 2110161587}
 --- !u!1 &361430186
 GameObject:
   m_ObjectHideFlags: 0
