@@ -59,5 +59,7 @@ public class Ball : MonoBehaviour
         rb.AddForce(transform.forward * ballLaunchSpeed, ForceMode.Impulse);
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         isBallActive = true;
+
+        audioManager.PlayLaunchSound(); // play launch ball sound when fired
     }
 }

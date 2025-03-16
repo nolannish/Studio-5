@@ -9,12 +9,14 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip wallHitSound;
     [SerializeField] private AudioClip paddleHitSound;
     [SerializeField] private AudioClip backgroundMusic; 
+    [SerializeField] private AudioClip launchSound; 
 
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+       //PlayLaunchSound(); // Play launch sound when the scene starts
         PlayBackgroundMusic(); // on start of scene begin background music
     }
 
@@ -31,6 +33,11 @@ public class audioManager : MonoBehaviour
     public void PlayPaddleHitSound()
     {
         audioSource.PlayOneShot(paddleHitSound);
+    }
+
+    public void PlayLaunchSound()
+    {
+        audioSource.PlayOneShot(launchSound);
     }
 
     private void PlayBackgroundMusic()
