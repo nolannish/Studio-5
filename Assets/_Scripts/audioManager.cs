@@ -6,12 +6,14 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip brickDestroySound;
     [SerializeField] private AudioClip wallHitSound;
     [SerializeField] private AudioClip paddleHitSound;
+    [SerializeField] private AudioClip backgroundMusic; // New background music clip
 
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        PlayBackgroundMusic(); // Start playing background music
     }
 
     public void PlayBrickDestroySound()
@@ -27,6 +29,13 @@ public class audioManager : MonoBehaviour
     public void PlayPaddleHitSound()
     {
         audioSource.PlayOneShot(paddleHitSound);
+    }
+
+    private void PlayBackgroundMusic()
+    {
+        audioSource.clip = backgroundMusic;
+        audioSource.loop = true; // Enable looping
+        audioSource.Play();
     }
 
     // Update is called once per frame
