@@ -5,6 +5,12 @@ public class Brick : MonoBehaviour
 {
     public GameObject brickParticle;
     private Coroutine destroyRoutine = null;
+    private audioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<audioManager>();
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -16,6 +22,7 @@ public class Brick : MonoBehaviour
     private IEnumerator DestroyWithDelay()
     {
         yield return new WaitForSeconds(0.1f); // two physics frames to ensure proper collision
+        audioManager.PlayBrickDestroySound();
         GameManager.Instance.OnBrickDestroyed(transform.position);
         // GameManager.Instance.IncrementScore();
         Destroy(gameObject);

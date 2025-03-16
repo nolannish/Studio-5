@@ -12,6 +12,12 @@ public class Ball : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     private bool isBallActive;
+    private audioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<audioManager>();
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -25,6 +31,11 @@ public class Ball : MonoBehaviour
             rb.AddForce(directionToFire * returnSpeed, ForceMode.Impulse);
 
             Instantiate(ballParticle, transform.position, transform.rotation);
+            audioManager.PlayPaddleHitSound();
+        }
+        else if (other.gameObject.CompareTag("Environment"))
+        {
+            audioManager.PlayWallHitSound();
         }
     }
 
