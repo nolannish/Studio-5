@@ -6,8 +6,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+
+    [SerializeField] public static int score = 0;
+    [SerializeField] private ScoreCounter scoreCounter;
     [SerializeField] private float shakeDuration = 0.1f; // How long the camera shake lasts
     [SerializeField] private float shakeIntensity = 0.2f; // How strong the camera shake is
+
 
     private int currentBrickCount;
     private int totalBrickCount;
@@ -40,8 +44,10 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         StartCoroutine(ShakeCamera());
 
         currentBrickCount--;
-        Debug.Log($"[GameManager] OnBrickDestroyed: Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-        if (currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        score++;
+        scoreCounter.UpdateScore(score);
+        Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
+        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
 
     public void KillBall()
@@ -51,7 +57,6 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
     }
-
     private IEnumerator ShakeCamera()
     {
         if (mainCamera == null)
