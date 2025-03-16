@@ -3,17 +3,19 @@ using UnityEngine;
 public class audioManager : MonoBehaviour
 {
     [Header("Audio Clips")]
+
+    //audio clips
     [SerializeField] private AudioClip brickDestroySound;
     [SerializeField] private AudioClip wallHitSound;
     [SerializeField] private AudioClip paddleHitSound;
-    [SerializeField] private AudioClip backgroundMusic; // New background music clip
+    [SerializeField] private AudioClip backgroundMusic; 
 
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        PlayBackgroundMusic(); // Start playing background music
+        PlayBackgroundMusic(); // on start of scene begin background music
     }
 
     public void PlayBrickDestroySound()
@@ -34,7 +36,7 @@ public class audioManager : MonoBehaviour
     private void PlayBackgroundMusic()
     {
         audioSource.clip = backgroundMusic;
-        audioSource.loop = true; // Enable looping
+        audioSource.loop = true; // Once song ends, will repeat... forever
         audioSource.Play();
     }
 
