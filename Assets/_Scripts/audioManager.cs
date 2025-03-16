@@ -10,6 +10,8 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip paddleHitSound;
     [SerializeField] private AudioClip backgroundMusic; 
     [SerializeField] private AudioClip launchSound; 
+    [SerializeField] private AudioClip buttonHoverSound; // New hover sound
+    [SerializeField] private AudioClip buttonClickSound; // New click sound
 
     private AudioSource audioSource;
 
@@ -38,6 +40,16 @@ public class audioManager : MonoBehaviour
     public void PlayLaunchSound()
     {
         audioSource.PlayOneShot(launchSound);
+    }
+
+    public void PlayButtonHoverSound()
+    {
+        audioSource.PlayOneShot(buttonHoverSound);
+    }
+
+    public void PlayButtonClickSound()
+    {
+        audioSource.PlayOneShot(buttonClickSound);
     }
 
     private void PlayBackgroundMusic()

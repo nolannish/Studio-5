@@ -636,6 +636,7 @@ MonoBehaviour:
   wallHitSound: {fileID: 8300000, guid: 4b9e46a51329c544986cda87302a3c23, type: 3}
   paddleHitSound: {fileID: 8300000, guid: fa23bd761b45b6042b44ef14093fe41d, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 6cd524e3f76b102418817ccc5730b2f6, type: 3}
+  launchSound: {fileID: 8300000, guid: 0b82bb4e506daeb42b4b20bc3304e706, type: 3}
 --- !u!82 &356058016
 AudioSource:
   m_ObjectHideFlags: 0
