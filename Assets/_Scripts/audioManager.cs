@@ -10,8 +10,8 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip paddleHitSound;
     [SerializeField] private AudioClip backgroundMusic; 
     [SerializeField] private AudioClip launchSound; 
-    [SerializeField] private AudioClip buttonHoverSound; // New hover sound
-    [SerializeField] private AudioClip buttonClickSound; // New click sound
+    [SerializeField] private AudioClip buttonHoverSound; 
+    [SerializeField] private AudioClip buttonClickSound; 
 
     private AudioSource audioSource;
 
