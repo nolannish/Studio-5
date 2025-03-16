@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public GameObject brickParticle;
     private Coroutine destroyRoutine = null;
 
     private void OnCollisionEnter(Collision other)
@@ -17,5 +18,6 @@ public class Brick : MonoBehaviour
         yield return new WaitForSeconds(0.1f); // two physics frames to ensure proper collision
         GameManager.Instance.OnBrickDestroyed(transform.position);
         Destroy(gameObject);
+        Instantiate(brickParticle, transform.position, transform.rotation);
     }
 }

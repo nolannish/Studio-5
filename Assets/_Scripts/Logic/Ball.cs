@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public GameObject ballParticle;
     [Header("Ball Movement")]
     [SerializeField] private float ballLaunchSpeed;
     [SerializeField] private float minBallBounceBackSpeed;
@@ -14,7 +15,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Paddle"))
+        if (other.gameObject.CompareTag("Paddle"))
         {
             Vector3 directionToFire = (transform.position - other.transform.position).normalized;
             float angleOfContact = Vector3.Angle(transform.forward, directionToFire);
@@ -22,6 +23,8 @@ public class Ball : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(directionToFire * returnSpeed, ForceMode.Impulse);
+
+            Instantiate(ballParticle, transform.position, transform.rotation);
         }
     }
 

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bd3e30eea244ddb8e3236978196fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballParticles: {fileID: 1670909031164312589, guid: 6d1bef323c352504da59c1e9c8c333a4, type: 3}
   ballLaunchSpeed: 7
   minBallBounceBackSpeed: 6
   maxBallBounceBackSpeed: 10

@@ -2211,6 +2211,8 @@ MonoBehaviour:
   maxLives: 3
   ball: {fileID: 4561635119993004754}
   bricksContainer: {fileID: 796630123}
+  shakeDuration: 0.1
+  shakeIntensity: 0.2
 --- !u!1001 &1708692028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2510,6 +2512,10 @@ PrefabInstance:
       propertyPath: ballAnchor
       value: 
       objectReference: {fileID: 1882589128}
+    - target: {fileID: 6846597512200348566, guid: 70365e4fb3127d44db431487cd761c1c, type: 3}
+      propertyPath: ballParticle
+      value: 
+      objectReference: {fileID: 1670909031164312589, guid: 6d1bef323c352504da59c1e9c8c333a4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
