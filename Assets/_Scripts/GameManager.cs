@@ -3,20 +3,35 @@ using System.Collections;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
-    [SerializeField] private int maxLives = 3;
+    [SerializeField] public int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
 
     [SerializeField] public static int score = 0;
     [SerializeField] private ScoreCounter scoreCounter;
+    [SerializeField] private LivesCounter livesCounter;
     [SerializeField] private float shakeDuration = 0.1f; // How long the camera shake lasts
     [SerializeField] private float shakeIntensity = 0.2f; // How strong the camera shake is
+    [SerializeField] private GameObject gameOverMenu;
 
 
     private int currentBrickCount;
     private int totalBrickCount;
     private Camera mainCamera;
     private Vector3 originalCameraPosition;
+    public bool isGameOverMenuActive;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        isGameOverMenuActive = false;
+
+        // Ensure gameOverMenu is hidden at the beginning
+        if (gameOverMenu != null)
+        {
+            gameOverMenu.SetActive(false);
+        }
+    }
 
     private void OnEnable()
     {
@@ -55,7 +70,30 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         maxLives--;
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
+        livesCounter.UpdateLives(maxLives);
+        Debug.Log("lives" + maxLives);
+        if(maxLives < 1){
+            GameOver();
+        }
         ball.ResetBall();
+    }
+
+    public void GameOver(){
+        Time.timeScale = 0f;
+        score = 0;
+        isGameOverMenuActive = true;
+        // Ensure the gameOverMenu is enabled when the game is over
+        if (gameOverMenu != null)
+        {
+            gameOverMenu.SetActive(true);
+            StartCoroutine(GameOverWait());
+        }
+    }
+
+    private IEnumerator GameOverWait(){
+        yield return new WaitForSecondsRealtime(1.5f);
+        Time.timeScale = 1f;
+        SceneHandler.Instance.LoadMenuScene();
     }
     private IEnumerator ShakeCamera()
     {
