@@ -3,12 +3,13 @@ using System.Collections;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
-    [SerializeField] private int maxLives = 3;
+    [SerializeField] public int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
 
     [SerializeField] public static int score = 0;
     [SerializeField] private ScoreCounter scoreCounter;
+    [SerializeField] private LivesCounter livesCounter;
     [SerializeField] private float shakeDuration = 0.1f; // How long the camera shake lasts
     [SerializeField] private float shakeIntensity = 0.2f; // How strong the camera shake is
 
@@ -55,8 +56,10 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         maxLives--;
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
+        livesCounter.UpdateLives(maxLives);
         ball.ResetBall();
     }
+
     private IEnumerator ShakeCamera()
     {
         if (mainCamera == null)
