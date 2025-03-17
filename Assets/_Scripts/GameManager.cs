@@ -72,8 +72,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // game over UI if maxLives < 0, then exit to main menu after delay
         livesCounter.UpdateLives(maxLives);
         Debug.Log("lives" + maxLives);
-        if(maxLives < 1){
-            GameOver();
+        if(maxLives <= 0){
+            StartCoroutine(DelayedGameOver());
         }
         ball.ResetBall();
     }
@@ -95,6 +95,13 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         Time.timeScale = 1f;
         SceneHandler.Instance.LoadMenuScene();
     }
+
+    private IEnumerator DelayedGameOver()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        GameOver();
+    }
+
     private IEnumerator ShakeCamera()
     {
         if (mainCamera == null)
