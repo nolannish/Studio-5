@@ -80,6 +80,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void GameOver(){
         Time.timeScale = 0f;
+        score = 0;
         isGameOverMenuActive = true;
         // Ensure the gameOverMenu is enabled when the game is over
         if (gameOverMenu != null)
