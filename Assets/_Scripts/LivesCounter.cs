@@ -32,6 +32,7 @@ public class LivesCounter : MonoBehaviour
     public void UpdateLives(int maxLives){
         toUpdate.SetText($"{maxLives}");
         livesTextContainer.DOLocalMoveY(containerInitPosition - moveAmount, duration).SetEase(animationCurve);
+        StartCoroutine(ResetLivesContainer(maxLives));
     }
 
     private IEnumerator ResetLivesContainer(int maxLives){
